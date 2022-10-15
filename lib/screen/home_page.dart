@@ -9,9 +9,10 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+          drawer: Drawer(),
           appBar: AppBar(
-        title: Text("Robin App"),
-      )),
+            title: Text("Robin App"),
+          )),
     );
   }
 }
