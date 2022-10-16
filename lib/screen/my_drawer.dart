@@ -10,10 +10,13 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
       backgroundColor: Colors.white,
       child: Container(
-        padding: const EdgeInsets.fromLTRB(10, 36, 0, 0),
+        margin: EdgeInsets.only(top: 36, left: 8, right: 8, bottom: 2),
+        // padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
         child: Column(
           children: [
             Row(
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
                     height: 60,
@@ -34,31 +37,39 @@ class MyDrawer extends StatelessWidget {
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                     ),
-                    Text(" Verified user . Membership"),
+                    Text(
+                      " Verified user . Membership",
+                      style: TextStyle(color: Colors.grey.shade500),
+                    ),
                   ],
                 ),
               ],
             ),
-            Expanded(
-                flex: 1,
-                child: Column(
-                  children: [
-                    DrawerItem(
-                      buttonName: "Set a Status",
-                      icon: Icons.emoji_emotions,
-                      clr: Colors.grey.shade400,
-                      onTap: (() {}),
-                    ),
-                    Divider(indent: 45, thickness: 1),
-                    DrawerItem(
-                      buttonName: "Snooze Notifications",
-                      icon: Icons.notifications,
-                      clr: Colors.grey.shade400,
-                      onTap: (() {}),
-                    ),
-                  ],
-                )),
-            activityToYourFiles(),SizedBox(child: Colors.grey,),
+            Container(
+              margin: EdgeInsets.only(top: 26, bottom: 26),
+              child: Expanded(
+                  flex: 1,
+                  child: Column(
+                    children: [
+                      DrawerItem(
+                        buttonName: "Set a Status",
+                        icon: Icons.emoji_emotions,
+                        clr: Colors.grey.shade400,
+                        onTap: (() {}),
+                      ),
+                      Divider(indent: 45, thickness: 1),
+                      DrawerItem(
+                        buttonName: "Snooze Notifications",
+                        icon: Icons.notifications,
+                        clr: Colors.grey.shade400,
+                        onTap: (() {}),
+                      ),
+                    ],
+                  )),
+            ),
+            Container(
+                margin: EdgeInsets.only(bottom: 26),
+                child: activityToYourFiles()),
             editPeople()
           ],
         ),
