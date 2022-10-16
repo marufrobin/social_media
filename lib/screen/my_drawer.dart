@@ -10,7 +10,7 @@ class MyDrawer extends StatelessWidget {
     return Drawer(
       backgroundColor: Colors.white,
       child: Container(
-        margin: EdgeInsets.only(top: 36, left: 8, right: 8, bottom: 2),
+        margin: EdgeInsets.only(top: 30, left: 8, right: 8, bottom: 2),
         // padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
         child: Column(
           children: [
@@ -45,32 +45,41 @@ class MyDrawer extends StatelessWidget {
                 ),
               ],
             ),
-            Container(
-              margin: EdgeInsets.only(top: 26, bottom: 26),
-              child: Expanded(
-                  flex: 1,
-                  child: Column(
-                    children: [
-                      DrawerItem(
-                        buttonName: "Set a Status",
-                        icon: Icons.emoji_emotions,
-                        clr: Colors.grey.shade400,
-                        onTap: (() {}),
-                      ),
-                      Divider(indent: 45, thickness: 1),
-                      DrawerItem(
-                        buttonName: "Snooze Notifications",
-                        icon: Icons.notifications,
-                        clr: Colors.grey.shade400,
-                        onTap: (() {}),
-                      ),
-                    ],
-                  )),
+            SizedBox(
+              height: 20,
             ),
+            Expanded(
+                flex: 1,
+                child: Column(
+                  children: [
+                    DrawerItem(
+                      buttonName: "Set a Status",
+                      icon: Icons.emoji_emotions,
+                      clr: Colors.grey.shade400,
+                      onTap: (() {}),
+                    ),
+                    Divider(indent: 45, thickness: 1),
+                    DrawerItem(
+                      buttonName: "Snooze Notifications",
+                      icon: Icons.notifications,
+                      clr: Colors.grey.shade400,
+                      onTap: (() {}),
+                    ),
+                  ],
+                )),
             Container(
-                margin: EdgeInsets.only(bottom: 26),
-                child: activityToYourFiles()),
-            editPeople()
+              height: 20,
+              width: double.infinity,
+              color: Colors.grey.shade100,
+            ),
+            activityToYourFiles(),
+            Container(
+              height: 20,
+              width: double.infinity,
+              color: Colors.grey.shade100,
+            ),
+            editPeople(),
+           
           ],
         ),
       ),
