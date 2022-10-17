@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:social_media/screen/page2.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomInset: true,
+        resizeToAvoidBottomInset: false,
         // drawer: Drawer(),
         // endDrawer: MyDrawer(),
         // key: _scaffoldKey,
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
           child: Container(
             padding: EdgeInsets.all(22),
             margin:
-                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.2),
+                EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.4),
             decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.only(
@@ -68,7 +69,18 @@ class _HomePageState extends State<HomePage> {
                     height: MediaQuery.of(context).size.height * 0.02,
                   ),
                   TextFormField(
-                    validator: (value) {},
+                    validator: (value) {
+                      var emailValid = RegExp(
+                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                          .hasMatch(value.toString());
+
+                      if (value!.isEmpty) {
+                        return "Fill up with your email";
+                      }
+                      if (emailValid == false) {
+                        return "Invalid email";
+                      }
+                    },
                     controller: emailController,
                     decoration: InputDecoration(
                         labelStyle: TextStyle(fontSize: 24),
@@ -96,6 +108,8 @@ class _HomePageState extends State<HomePage> {
                       }
                     },
                     controller: passwordController,
+                    obscureText: true,
+                    obscuringCharacter: "#",
                     decoration: InputDecoration(
                         labelStyle: TextStyle(fontSize: 24),
                         prefixIcon: Icon(Icons.password),
@@ -108,7 +122,13 @@ class _HomePageState extends State<HomePage> {
                   ),
                   Center(
                     child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) => Page2()));
+                          } else
+                            print("Somtthing prblem");
+                        },
                         // style: ButtonStyle(),
                         child: Text(
                           "Login",
