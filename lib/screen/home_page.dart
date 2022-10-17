@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:social_media/screen/my_drawer.dart';
 import 'package:social_media/screen/page2.dart';
 
 class HomePage extends StatefulWidget {
@@ -20,19 +21,25 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        resizeToAvoidBottomInset: false,
-        // drawer: Drawer(),
-        // endDrawer: MyDrawer(),
-        // key: _scaffoldKey,
-        // appBar: AppBar(
-        //   actions: [
-        //     IconButton(
-        //         onPressed: () {
-        //           _scaffoldKey.currentState?.openEndDrawer();
-        //         },
-        //         icon: Icon(Icons.menu))
-        //   ],
-        //   title: Text("Robin App"),
+        extendBodyBehindAppBar: true,
+        resizeToAvoidBottomInset: true,
+        // drawer: MyDrawer(),
+        endDrawer: MyDrawer(),
+        key: _scaffoldKey,
+        appBar: AppBar(
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+          // foregroundColor: Colors.transparent,
+          // shadowColor: Colors.transparent,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  _scaffoldKey.currentState?.openEndDrawer();
+                },
+                icon: Icon(Icons.menu))
+          ],
+          title: Text("Robin App"),
+        ),
         body: Container(
           // color: Colors.cyan,
           // height: double.infinity,
@@ -41,6 +48,8 @@ class _HomePageState extends State<HomePage> {
               image: DecorationImage(
                   image: AssetImage("images/image2.jpg"), fit: BoxFit.cover)),
           child: Container(
+            // height: MediaQuery.of(context).size.height * 0.4,
+            // width: double.infinity,
             padding: EdgeInsets.all(22),
             margin:
                 EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.4),
@@ -134,7 +143,11 @@ class _HomePageState extends State<HomePage> {
                           "Login",
                           style: TextStyle(fontSize: 20),
                         )),
-                  )
+                  ),
+                  SizedBox(
+                    // height: double.infinity,
+                    height: MediaQuery.of(context).size.height * 0.125,
+                  ),
                 ],
               ),
             ),
